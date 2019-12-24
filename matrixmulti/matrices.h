@@ -64,6 +64,30 @@ namespace pmatricnames {
             return matrices({ {0} });
         }
     }
+    matrices operator+(matrices& mat1, double d) {
+        vector< vector<double> > obj1(mat1.GetMat());
+        
+            //generated zero matrix with corresponding dimension
+            for (int row = 0; row < obj1.size(); row++) {
+                for (int col = 0; col < obj1[0].size(); col++) {
+                    obj1[row][col] = obj1[row][col] + d;
+                }
+            }
+            return matrices(obj1);
+    }
+    matrices operator+(double d,matrices& mat1) {
+        vector< vector<double> > obj1(mat1.GetMat());
+
+        //generated zero matrix with corresponding dimension
+        for (int row = 0; row < obj1.size(); row++) {
+            for (int col = 0; col < obj1[0].size(); col++) {
+                obj1[row][col] = obj1[row][col] + d;
+            }
+        }
+        return matrices(obj1);
+    }
+        
+    
     double sumofvector(vector<double>& vec) {
         if (vec.size() == 0) {
             return 0.0;
@@ -126,5 +150,26 @@ namespace pmatricnames {
             return matrices({ {0} });
         }
     }
+    matrices operator*(matrices& mat1, double d) {
+        vector< vector<double> > obj1(mat1.GetMat());            
+        for (int row = 0; row < obj1.size(); row++) {
+                for (int col = 0; col < obj1[0].size(); col++) {                    
+                    obj1[row][col] = d * obj1[row][col];
+                   
+                }
+            }
+            return matrices(obj1);
+        }
+    matrices operator*( double d, matrices& mat1) {
+        vector< vector<double> > obj1(mat1.GetMat());
+        for (int row = 0; row < obj1.size(); row++) {
+            for (int col = 0; col < obj1[0].size(); col++) {
+                obj1[row][col] = d * obj1[row][col];
+
+            }
+        }
+        return matrices(obj1);
+    }
+    
 
 }
